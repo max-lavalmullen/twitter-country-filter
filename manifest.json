@@ -1,0 +1,33 @@
+{
+    "manifest_version": 3,
+    "name": "Twitter Country Filter",
+    "version": "1.0",
+    "description": "Filter tweets based on user account location.",
+    "permissions": [
+        "storage",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://twitter.com/*",
+        "https://x.com/*"
+    ],
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Twitter Country Filter"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://twitter.com/*",
+                "https://x.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_idle"
+        }
+    ]
+}
